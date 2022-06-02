@@ -1,0 +1,81 @@
+{
+    "name": "public-affairs",
+    "description": "A Ghost theme",
+    "version": "0.5.2",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Fredrik Sandberg",
+        "email": "fredrik.sandberg@cyberlighthouse.io",
+        "url": "https://cyberlighthouse.io"
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme",
+        "cyber lighthouse",
+        "swedish affairs"
+    ],
+    "config": {
+        "posts_per_page": 7,
+        "image_sizes": {
+            "xs": {
+                "width": 150
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 720
+            },
+            "l": {
+                "width": 960
+            },
+            "xl": {
+                "width": 1200
+            },
+            "xxl": {
+                "width": 2000
+            }
+        },
+        "card_assets": true,
+        "custom": {
+            "title_font": {
+                "type": "select",
+                "options": ["Modern sans-serif", "Elegant serif"],
+                "default": "Modern sans-serif"
+            },
+            "body_font": {
+                "type": "select",
+                "options": ["Modern sans-serif", "Elegant serif"],
+                "default": "Elegant serif"
+            },
+            "header_style": {
+                "type": "select",
+                "options": ["Light", "Accent color", "Dark"],
+                "default": "Light"
+            },
+            "white_publication_logo_for_transparent_header": {
+                "type": "image"
+            },
+            "email_signup_text": {
+                "type": "text",
+                "default": "Don't miss out on the latest news. Sign up now to get access to the library of members-only articles."
+            },
+            "enter_tag_slugs_for_primary_sections": {
+                "type": "text",
+                "group": "homepage"
+            },
+            "enter_tag_slugs_for_secondary_sections": {
+                "type": "text",
+                "group": "homepage"
+            },
+            "social_icons": {
+                "type": "boolean",
+                "default": true
+            }
+        }
+    }
+}

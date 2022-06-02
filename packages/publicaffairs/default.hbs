@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+
+    {{ghost_head}}
+</head>
+
+<body class="{{body_class}}{{{block "body_class"}}} {{#if @site.description}}is-head-b--a_n{{else}}is-head-b--n--a{{/if}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}{{#is "tag"}}{{#if tag.feature_image}} is-head-transparent{{/if}}{{/is}}{{#match @custom.header_style "Accent color"}} is-head-brand{{/match}}{{#match @custom.header_style "Dark"}} is-head-dark{{/match}}">
+    <div class="gh-site">
+        <header id="gh-head" class="gh-head gh-outer">
+            <div class="gh-head-inner gh-inner">
+                {{#if @site.description}}
+                    <a class="gh-head-description" href="{{@site.url}}">{{@site.description}}</a>
+                {{/if}}
+
+                <div class="gh-head-brand">
+                    <a class="gh-head-logo" href="{{@site.url}}">
+                        {{#if @site.logo}}
+                            <img src="{{@site.logo}}" alt="{{@site.title}}">
+
+                            {{#if @custom.white_publication_logo_for_transparent_header}}
+                                <img src="{{@custom.white_publication_logo_for_transparent_header}}" alt="{{@site.title}}">
+                            {{/if}}
+                        {{else}}
+                            {{@site.title}}
+                        {{/if}}
+                    </a>
+                    <button class="gh-burger"></button>
+                </div>
+
+                <nav class="gh-head-menu">
+                    {{navigation}}
+                </nav>
+
+                <div class="gh-head-actions">
+                    {{#unless @member}}
+                        <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                    {{else}}
+                        <a class="gh-head-btn gh-btn" href="#/portal/account" data-portal="account">Account</a>
+                    {{/unless}}
+                </div>
+            </div>
+        </header>
+
+        {{!-- {{navigation}} --}}
+
+        {{{body}}}
+
+        <footer class="gh-foot gh-outer">
+            <div class="gh-foot-inner gh-inner">
+                {{^if @member.paid}}
+                    <section class="gh-subscribe">
+                        {{^if @member}}
+                            <h4 class="gh-subscribe-title">Subscribe to {{@site.title}}</h3>
+
+                            {{#if @custom.email_signup_text}}
+                                <div class="gh-subscribe-description">{{@custom.email_signup_text}}</div>
+                            {{/if}}
+
+                            <button class="gh-subscribe-btn gh-btn" data-portal="signup">{{> "icons/email"}} Subscribe now</button>
+                        {{else}}
+                            <h3 class="gh-subscribe-title">Ready for unlimited access?</h3>
+
+                            <div class="gh-subscribe-description">Upgrade to a paid account to get full access to all content.</div>
+
+                            <button class="gh-subscribe-btn gh-btn" data-portal="account/plans">Upgrade now</button>
+                        {{/if}}
+                    </section>
+                {{/if}}
+
+                {{#if @custom.social_icons}}
+                    <section>
+                        {{#if @site.facebook}}
+                            <a class="social-item social-item-facebook"
+                                href="{{facebook_url @site.facebook}}" target="_blank"
+                                rel="noopener noreferrer" aria-label="Facebook">
+                                <svg role="img" class="icon" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                        {{/if}}
+                        {{#if @site.twitter}}
+                            <a class="social-item social-item-twitter"
+                                href="{{twitter_url @site.twitter}}" target="_blank"
+                                rel="noopener noreferrer" aria-label="Twitter">
+                                <svg class="icon" role="img" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                            </a>
+                        {{/if}}
+                        <a class="social-item social-item-rss"
+                            href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/"
+                            target="_blank" rel="noopener noreferrer" aria-label="RSS">
+                            <svg class="icon" role="img" xmlns="http://www.w3.org/2000/svg"><title>RSS</title><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg>
+                        </a>
+                    </section>
+                {{/if}}
+
+                <nav class="gh-foot-menu gh-copyright">
+                        Copyright © {{date format="YYYY"}} {{@site.title}} - All Rights Reserved 
+                    <div class="gh-foot-inner">
+                        <div>A product from: </div>
+                        <div><a 
+                            href="https://cyberlighthouse.io" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            aria-label="Cyber Lighthouse"
+                        >
+                            <img 
+                                src="https://cyberlighthouse.io/images/cyberlighthouse-fb-logo.svg"
+                                alt="Cyber Lighthouse logo" width="69" height="44">
+                        </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    {{#is "post, page"}}
+        {{> pswp}}
+    {{/is}}
+
+    <script src="{{asset "built/main.min.js"}}"></script>
+
+    {{ghost_foot}}
+</body>
+
+</html>
