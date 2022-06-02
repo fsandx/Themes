@@ -584,7 +584,7 @@ body:not(.home-template) .gh-topic-grid .gh-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .gh-foot-menu {

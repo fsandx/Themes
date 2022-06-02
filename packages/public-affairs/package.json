@@ -1,7 +1,7 @@
 {
     "name": "public-affairs",
     "description": "A Ghost theme",
-    "version": "0.5.2",
+    "version": "0.5.3",
     "engines": {
         "ghost": ">=5.0.0"
     },
